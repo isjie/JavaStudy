@@ -1,0 +1,3 @@
+Ctrl+O，重写方法override/implement
+ 自动补全变量名称 : Ctrl + Alt + v 
+选定代码块, Ctrl+Alt+T   surround with
