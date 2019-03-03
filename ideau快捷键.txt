@@ -1,3 +1,4 @@
-Ctrl+O£¬ÖØĞ´·½·¨override/implement
- ×Ô¶¯²¹È«±äÁ¿Ãû³Æ : Ctrl + Alt + v 
-Ñ¡¶¨´úÂë¿é, Ctrl+Alt+T   surround with
+ï»¿Ctrl+Oï¼Œé‡å†™æ–¹æ³•override/implement
+ è‡ªåŠ¨è¡¥å…¨å˜é‡åç§° : Ctrl + Alt + v 
+é€‰å®šä»£ç å—, Ctrl+Alt+T   surround with
+getã€setå¿«æ·é”®ï¼šå³é”®->generatoræˆ–è€…å¿«æ·é”®ä¸ºï¼šalt+insert
