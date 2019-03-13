@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta name="description" content="Lanzhou University of technology"/>
+  <meta name="author" content="Zhang Di">
+  <meta name="robots" content="index,follow">
+  <meta name="application-name" content="medical system">
+
+  <link rel='stylesheet' href='assets/css/fullcalendar.css'>
+  <link rel='stylesheet' href='assets/css/datatables/datatables.css'>
+  <link rel='stylesheet' href='assets/scss/chosen.css'>
+  <link rel='stylesheet' href='assets/scss/font-awesome-4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='assets/css/app.css'>
+  <link rel='stylesheet' href='assets/css/reset.css'>
+
+  <!-- Le fav and touch icons -->
+  <link href="assets/favicon.ico" rel="shortcut icon"  type="image/x-icon">
+  <link href="assets/apple-touch-icon.png" rel="apple-touch-icon"  type="image/x-icon">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  @javascript html5shiv respond.min
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+  <title>兰州理工大学校友信息库</title>
+
+</head>
+
+<body>
+
+<div class="all-wrapper no-menu-wrapper">
+  <div class="login-logo-w">
+    <a href="tpl-admin/page-statistics.html" class="logo">
+      <i class="fa fa-graduation-cap"></i>
+      <span>兰州理工大学校友信息平台</span>
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+
+      <div class="content-wrapper bold-shadow">
+        <div class="content-inner">
+          <div class="main-content main-content-grey-gradient no-page-header">
+            <div class="main-content-inner">
+              <form action="" role="form">
+                <h3 class="form-title form-title-first"><i class="icon-lock"></i> 敬请登录</h3>
+                <div class="form-group">
+                  <label>用户名</label>
+                  <input type="text" id="login_username" class="form-control" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                  <label>密码</label>
+                  <input type="password" id="login_userpwd" class="form-control" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> 记住我
+                    </label>
+                  </div>
+                </div>
+                <a id="login_submit" class="btn btn-primary btn-lg">登录</a>
+                <a href="#" class="btn btn-link">取消</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src='assets/js/jquery.sparkline.min.js'></script>
+<script src='assets/js/bootstrap/tab.js'></script>
+<script src='assets/js/bootstrap/dropdown.js'></script>
+<script src='assets/js/bootstrap/collapse.js'></script>
+<script src='assets/js/bootstrap/alert.js'></script>
+<script src='assets/js/bootstrap/transition.js'></script>
+<script src='assets/js/bootstrap/tooltip.js'></script>
+<script src='assets/js/jquery.knob.js'></script>
+<script>
+  $("#login_submit").click(function(){
+    var username = $("#login_username").val().trim();
+    if(username == "admin"){
+      $(location).attr('href', 'tpl-admin/page-statistics.html');
+    }else if(username == "local"){
+      $(location).attr('href', 'tpl-local/page-statistics.html');
+    }else if(username == "common" ){
+      $(location).attr('href', 'tpl-common/page-statistics.html');
+    }else{
+      $(location).attr('href', 'tpl-search/page-alumnus-form.html');
+    }
+
+  })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="description" content="hu nan xiang ya yi yuan men zhen xi tong "/>
+    <meta name="author" content="Han Yuping, Zhang Di">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="medical system">
+
+    <link rel='stylesheet' href='../assets/css/fullcalendar.css'>
+    <link rel='stylesheet' href='../assets/css/datatables/datatables.css'>
+    <link rel='stylesheet' href='../assets/css/datatables/dataTables.bootstrap.css'>
+    <link rel='stylesheet' href='../assets/scss/chosen.css'>
+    <link rel='stylesheet' href='../assets/scss/font-awesome-4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='../assets/css/app.css'>
+    <link rel='stylesheet' href='../assets/css/bootstrap-tree.css'>
+    <link rel='stylesheet' href='../assets/css/icheck.square.green.css'>
+    <link rel='stylesheet' href='../assets/css/reset.css'>
+
+    <!-- Le fav and touch icons -->
+    <link href="../assets/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="../assets/apple-touch-icon.png" rel="apple-touch-icon" type="image/x-icon">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <![endif]-->
+    <title>校友管理页面</title>
+</head>
+<body>
+
+<div class="all-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="text-center">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="side-bar-wrapper collapse navbar-collapse navbar-ex1-collapse">
+                <a href="#" class="logo hidden-sm hidden-xs">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>普通用户，你好！</span>
+                </a>
+                <!-- <div class="search-box">
+                  <input type="text" placeholder="搜索" class="form-control">
+                </div> -->
+                <div class="relative-w">
+                    <ul class="side-menu">
+
+                        <li>
+                            <a href="page-statistics.html">
+                                <i class="fa fa-bar-chart"></i> 校友统计
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="page-alumnus-form.html">
+                                <i class="fa fa-id-card-o"></i> 校友查询
+                            </a>
+                        </li>
+
+                        <li class='current'>
+                            <a href="page-userself.html">
+                                <i class="fa fa-building-o"></i> 个人信息管理
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="content-wrapper wood-wrapper">
+                <div class="content-inner">
+                    <div class="page-header">
+                        <div class="header-links hidden-xs">
+                            <a href="notifications.html"><i class="icon-comments"></i> 消息</a>
+                            <a href="../login-admin.html"><i class="icon-signout"></i> 登出</a>
+                        </div>
+                        <h1><i class="fa fa-id-card-o"></i> 校友管理</h1>
+                    </div>
+                    <div class="main-content">
+                        <div class="row">
+
+                            <div class="widget" id="advance_search_dialog">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_userself" data-toggle="tab">个人信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_pwd" data-toggle="tab">修改密码</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content bottom-margin">
+                                    <div class="tab-pane active" id="tab_userself">
+                                        <div class="form-horizontal">
+                                            <div class="shadowed-bottom">
+                                                <p>基本信息</p>
+                                            </div>
+                                            <div class="padded">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">姓名</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" value="张海鹏"
+                                                               disabled="disabled" id="shit">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">性别</label>
+
+                                                    <div class="col-md-8">
+                                                        <div class="radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="gender" checked>&nbsp;男
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="gender">&nbsp;女
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">出身年月</label>
+
+                                                    <div class="col-md-8">
+                                                        <input class="form-control" type="number" value="1984"
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">民族</label>
+
+                                                    <div class="col-md-8">
+                                                        <select class="form-control" disabled="disabled">
+                                                            <option>汉族</option>
+                                                            <option>回族</option>
+                                                            <option>藏族</option>
+                                                            <option>蒙古族</option>
+                                                            <option>满族</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="shadowed-bottom">
+                                                <p>学籍信息</p>
+                                            </div>
+                                            <div class="padded">
+                                                <div class="edu-pane">
+                                                    <div class="education">
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">学历<span
+                                                                    class="old-edu-num">1</span></label>
+
+                                                            <div class="col-md-8">
+                                                                <select class="form-control old-edu-name"
+                                                                        disabled="disabled">
+                                                                    <option value="本科">本科</option>
+                                                                    <option value="硕士">硕士</option>
+                                                                    <option value="博士">博士</option>
+                                                                    <option value="专科">专科</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">入学年级</label>
+
+                                                            <div class="col-md-8">
+                                                                <input type="number" class="form-control old-edu-year"
+                                                                       value="2002"
+                                                                       disabled="disabled">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">学籍学院</label>
+
+                                                            <div class="col-md-8">
+                                                                <input type="text" class="form-control old-edu-collage"
+                                                                       value="计算机与通信学院"
+                                                                       disabled="disabled">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">学籍专业</label>
+
+                                                            <div class="col-md-8">
+                                                                <input type="text" class="form-control old-edu-major"
+                                                                       value="计算机科学与技术"
+                                                                       disabled="disabled">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-2 col-md-8">
+                                                        <button class=" btn btn-primary" id="add-new-edu"
+                                                                data-toggle="modal" data-target="#addEduModal">添加新学历信息
+                                                        </button>
+                                                        <button class=" btn btn-default" id="del-new-edu">删除学历信息
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="shadowed-bottom">
+                                                <p>联系方式</p>
+                                            </div>
+                                            <div class="padded">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">手机号</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="number" class="form-control" value="13511001792"
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">QQ号</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="number" class="form-control" value=""
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">微信号</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="number" class="form-control" value="13511001792"
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="shadowed-bottom">
+                                                <p>工作信息</p>
+                                            </div>
+                                            <div class="padded">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">工作单位</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" value="北京新浪公司"
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">担任职务</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" value="云事业部部门经理"
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">所在地</label>
+
+                                                    <div class="col-md-8 radio">
+                                                        <label>
+                                                            <input type="radio" name="hostCountry"
+                                                                   id="host_country_home" value="home" checked>
+                                                            国内
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="hostCountry"
+                                                                   id="host_country_aboard" value="aboard">
+                                                            国外
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">所在省</label>
+
+                                                    <div class="col-md-8">
+                                                        <select class="form-control" disabled="disabled">
+                                                            <option>北京</option>
+                                                            <option>甘肃</option>
+                                                            <option>上海</option>
+                                                            <option>河北</option>
+                                                            <option>山东</option>
+                                                            <option>黑龙江</option>
+                                                            <option>辽宁</option>
+                                                            <option>吉林</option>
+                                                            <option>内蒙古</option>
+                                                            <option>山西</option>
+                                                            <option>陕西</option>
+                                                            <option>宁夏</option>
+                                                            <option>青海</option>
+                                                            <option>新疆</option>
+                                                            <option>西藏</option>
+                                                            <option>四川</option>
+                                                            <option>湖南</option>
+                                                            <option>湖北</option>
+                                                            <option>江西</option>
+                                                            <option>河南</option>
+                                                            <option>安徽</option>
+                                                            <option>江苏</option>
+                                                            <option>江西</option>
+                                                            <option>浙江</option>
+                                                            <option>福建</option>
+                                                            <option>广东</option>
+                                                            <option>广西</option>
+                                                            <option>云南</option>
+                                                            <option>海南</option>
+                                                            <option>台湾</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">所在市</label>
+
+                                                    <div class="col-md-8">
+                                                        <select class="form-control" disabled="disabled">
+                                                            <option>北京</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">工作电话</label>
+
+                                                    <div class="col-md-8">
+                                                        <input type="number" class="form-control" placeholder=""
+                                                               disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-2 col-md-8">
+                                                        <button class=" btn btn-primary" id="tab-userself-edit">修改
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-offset-2 col-md-8" style="display: none;"
+                                                         id="tab-userself-edit-pane">
+                                                        <button class=" btn btn-primary" id="tab-userself-edit-submit">
+                                                            修改完成
+                                                        </button>
+                                                        &nbsp;&nbsp;
+                                                        <button class=" btn btn-default" id="tab-userself-edit-cancel">
+                                                            取消
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="tab_pwd">
+                                        <div class="form-horizontal" id="oldpwd-auth">
+                                            <div class="shadowed-bottom">
+                                                <p>验证密码</p>
+                                            </div>
+                                            <div class="padded">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">请输入原始密码</label>
+
+                                                    <div class="col-md-4">
+                                                        <input type="password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-4 col-md-8">
+                                                        <button class=" btn btn-primary" id="oldpwd-auth-set">确定
+                                                        </button>
+                                                        &nbsp;&nbsp;
+                                                        <button class=" btn btn-default" type="reset">重置</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-horizontal" id="newpwd-auth" style="display:none;">
+                                            <div class="shadowed-bottom">
+                                                <p>验证密码</p>
+                                            </div>
+                                            <div class="padded">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">请输入新密码</label>
+
+                                                    <div class="col-md-4">
+                                                        <input type="password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label">请确认新密码</label>
+
+                                                    <div class="col-md-4">
+                                                        <input type="password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-4 col-md-8">
+                                                        <button class=" btn btn-primary">确定</button>
+                                                        &nbsp;&nbsp;
+                                                        <button class=" btn btn-default" type="reset">重置</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 删除用户 -->
+<div class="modal fade" id="addEduModal" tabindex="-1" role="dialog" aria-labelledby="addEduLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addEduLabel">添加在理工大的其他学历</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">学历</label>
+
+                        <div class="col-md-8">
+                            <select class="form-control" id="new-edu-name">
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
+                                <option value="专科">专科</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">入学年级</label>
+
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" value="" id="new-edu-year">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">学籍学院</label>
+
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" value="" id="new-edu-collage">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">学籍专业</label>
+
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" value="" id="new-edu-major">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="add-edu-button">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 禁用用户 -->
+<div class="modal fade" id="forbiddenUserModal" tabindex="-1" role="dialog" aria-labelledby="forbiddenUserLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="forbiddenUserLabel">禁用用户</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" role="form" class="form-horizontal">
+                    <h3>你确定要禁用用户：李晓伟吗？</h3>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src='../assets/js/jquery.sparkline.min.js'></script>
+<script src='../assets/js/bootstrap/bootstrap.min.js'></script>
+<script src='../assets/js/jquery.knob.js'></script>
+<script src='../assets/js/chosen.jquery.min.js'></script>
+
+<script src='../assets/js/datatables/jquery.dataTables.min.js'></script>
+<script src='../assets/js/datatables/dataTables.bootstrap.js'></script>
+<script src='../assets/js/bootstrap-tree.js'></script>
+<script src="../assets/js/icheck.min.js"></script>
+
+<script src='../assets/js/for_pages/page-userself.js'></script>
+
+</body>
+</html>

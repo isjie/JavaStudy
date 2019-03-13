@@ -1,0 +1,121 @@
+/*!
+ *
+ * Copyright 2017
+ * 
+ * rewrited by Zhangdi(zhangdiwaa@163.com)
+ */
+/*一些对基本样式的修改*/
+.widget {
+    margin-bottom: 10px;
+}
+.shadowed-bottom{
+    padding: 10px 20px;
+}
+.breadcrumb > li > a{
+    cursor: default;
+    text-underline: none;
+}
+.breadcrumb > li > a > i{
+    padding-left:10px;
+    cursor: pointer;
+}
+.dataTable{
+    width: 100%;
+}
+
+
+/*一些对表单的修改*/
+.left.control-label{
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 7px;
+}
+.modal-footer {
+    margin-top: 0px;
+}
+.value-block .value-self {
+    font-size: 18px;
+}
+/*对表格样式的修改*/
+.table-striped > tbody > tr:nth-child(odd) > td.alert-danger, .table-striped > tbody > tr:nth-child(odd) > th.alert-danger{
+    background-color: #f7d9d9;
+}
+.table-striped > tbody > tr:nth-child(odd) > td.alert-warning, .table-striped > tbody > tr:nth-child(odd) > th.alert-warning{
+    background-color: #ede6c2;
+}
+.table-striped > tbody > tr:nth-child(odd) > td.alert-success, .table-striped > tbody > tr:nth-child(odd) > th.alert-success{
+    background-color: #dff0d8;
+}
+.table-striped > tbody > tr:nth-child(odd) > td.alert-animated, .table-striped > tbody > tr:nth-child(odd) > th.alert-animated{
+    background-color: #f7d9d9;
+}
+
+/*bootstrap-wysiwyg 文本编辑器样式*/
+.btn-toolbar {
+    margin-bottom: 5px;
+}
+
+.editor {
+    max-height: 200px;
+    background-color: white;
+    border-collapse: separate;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 4px;
+    box-sizing: content-box;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    overflow: auto;
+    outline: none;
+}
+
+.subject {
+    height: 60px;
+}
+.describe {
+    height:140px;
+}
+.subject.small {
+    height:40px;
+}
+.describe.small {
+    height:60px;
+}
+.voiceBtn {
+    width: 20px;
+    color: transparent;
+    background-color: transparent;
+    transform: scale(2.0, 2.0);
+    -webkit-transform: scale(2.0, 2.0);
+    -moz-transform: scale(2.0, 2.0);
+    border: transparent;
+    cursor: pointer;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+div[data-role="editor-toolbar"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dropdown-menu a {
+    cursor: pointer;
+}
+
+.magic-overlay {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 37px;
+    height: 30px;
+}
+

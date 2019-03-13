@@ -1,0 +1,51 @@
+<div class="col-md-9" ng-controller="upload_alumnus_ctrl">
+    <div class="content-wrapper">
+        <div class="content-inner">
+            <div class="page-header">
+                <header data-ng-include=" '/static/views/c_header.html' "></header>
+                <h1><i class="fa fa-id-card-o"></i> 校友数据上传</h1>
+            </div>
+
+            <div class="main-content">
+                <div class="widget">
+                    <div class="widget-content-white glossed">
+                        <div class="padded">
+                            <h4 class="form-title form-title-first">
+                                <div class="pull-left">
+                                    上传文件参考示例：<a href="/static/openfiles/upload_demo.xlsx">点击下载</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a ui-sref="alumnus" href="/alumnus">
+                                        返回校友管理
+                                    </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </h4>
+
+
+                            <form id="up_form" enctype="multipart/form-data" method="post" action="/upload_file"
+                                  target="_blank">
+                                <div class="form-group" style="margin: 15px;">
+                                    <input id="upload_file" type="file" name="myfile" ng-click="upload_alumnus()">
+                                    <br/>
+                                    <input id="upload_submit"
+                                           class="btn btn-primary"
+                                           type="submit" value="上传数据"
+                                            />
+                                </div>
+
+                                <input id="user" name="user" ng-model="user" type="hidden"/>
+                                <input id="token" name="token" ng-model="token" type="hidden"/>
+                                <br><br><br>
+                                <a href="/static/examples/example.xls">示例文件</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

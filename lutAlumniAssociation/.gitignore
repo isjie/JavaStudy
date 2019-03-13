@@ -1,0 +1,17 @@
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.idea/
+.name
+/application/mysite/oneapp/migrations
+__pycache__
+application/mysite/mysite/setting.py
+application/mysite/mysite/__pycache__
+*.pyc
+application/mysite/oneapp/static/test.html 
+application/mysite/oneapp/static/test.js
+/application/mysite/mysite/settings.py

@@ -1,0 +1,517 @@
+<div class="col-md-9" ng-controller="info_modify_ctrl">
+    <div class="content-wrapper">
+        <div class="content-inner">
+            <div class="page-header">
+                <header data-ng-include=" '/static/views/c_header.html' "></header>
+                <h1><i class="fa fa-id-card-o"></i> 个人信息管理</h1>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="widget">
+                        <div class="widget-content-white glossed">
+                            <div class="padded">
+                                <div class="tab-pane active" id="tab_userself">
+                                    <form  name="user_form" class="form-horizontal">
+
+                                        <h4 class="form-title form-title-first"><i class="icon-th-list"></i>
+                                            基本信息</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label class="col-md-4 control-label">*姓名：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                     name="user_name"
+                                                     type="text"
+                                                     class="form-control"
+                                                     ng-model="user.user_info.user_name"
+                                                     required
+                                                     ng-maxlength="20"
+                                                     ng-class="{
+                                                         'error': user_form.user_name.$invalid && user_form.user_name.$dirty,
+                                                         'done': user_form.user_name.$valid
+                                                     }"
+                                                    >
+                                                    <label class="error" for="user_name"
+                                                            ng-show="user_form.user_name.$invalid && user_form.user_name.$dirty">
+                                                            <span ng-show="user_form.user_name.$error.required">请输入真实姓名;</span>
+                                                            <span ng-show="user_form.user_name.$error.maxlength">姓名不得超过20个字符;</span>
+                                                    </label>
+                                                </div>
+                                                <label class="col-md-4 control-label">出生日期：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                    name="user_birthday"
+                                                    type="text"
+                                                    class="form-control"
+                                                    ng-model="user.user_info.user_birthday"
+                                                    ng-pattern="/^(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)$/"
+                                                    ng-class="{
+                                                        'error': user_form.user_birthday.$invalid && user_form.user_birthday.$dirty,
+                                                        'done': user_form.user_birthday.$valid
+                                                    }"
+                                                    >
+                                                    <label class="error" for="user_birthday"
+                                                            ng-show="user_form.user_birthday.$invalid && user_form.user_birthday.$dirty">
+                                                            <span ng-show="user_form.user_birthday.$error">请按诸如2001-03-02这样的格式输入出生日期;</span>
+                                                    </label>
+                                                </div>
+
+                                                <label class="col-md-4 control-label">国籍：</label>
+                                                    <div class="col-md-8">
+                                                        <select
+                                                            name="user_country"
+                                                            ng-model="user_country"
+                                                            class="form-control"
+                                                            ng-options="p.country_name_cn for p in countries"
+                                                            >
+                                                            <option value="">请选择国籍</option>
+                                                        </select>
+                                                    </div>
+                                                    {{ user_country }}
+
+                                                </div>
+                                            <div class="col-lg-6">
+                                            <label class="col-md-4 control-label">性别：</label>
+                                            <div class="col-md-8">
+                                                <select
+                                                name="user_gender"
+                                                ng-model="user.user_info.user_gender"
+                                                class="form-control"
+                                                >
+                                                <option value="">请选择性别</option>
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                                </select>
+                                            </div>
+                                            <label class="col-md-4 control-label">民族：</label>
+                                                <div class="col-md-8">
+                                                    <select
+                                                    name="user_nation"
+                                                    ng-model="user.user_info.user_nation"
+                                                    class="form-control"
+                                                    ng-class="{
+                                                       'error': user_form.user_nation.$invalid && user_form.user_birthday.$dirty,
+                                                       'done': user_form.user_nation.$valid
+                                                    }"
+                                                    >
+                                                    <option value="">请选择民族</option>
+                                                    <option value="汉族">汉族</option>
+                                                    <option value="蒙古族">蒙古族</option>
+                                                    <option value="回族">回族</option>
+                                                    <option value="藏族">藏族</option>
+                                                    <option value="维吾尔族">维吾尔族</option>
+                                                    <option value="苗族">苗族</option>
+                                                    <option value="彝族">彝族</option>
+                                                    <option value="壮族">壮族</option>
+                                                    <option value="布依族">布依族</option>
+                                                    <option value="朝鲜族">朝鲜族</option>
+                                                    <option value="满族">满族</option>
+                                                    <option value="侗族">侗族</option>
+                                                    <option value="瑶族">瑶族</option>
+                                                    <option value="白族">白族</option>
+                                                    <option value="土家族">土家族</option>
+                                                    <option value="哈尼族">哈尼族</option>
+                                                    <option value="哈萨克族">哈萨克族</option>
+                                                    <option value="傣族">傣族</option>
+                                                    <option value="黎族">黎族</option>
+                                                    <option value="傈僳族">傈僳族</option>
+                                                    <option value="佤族">佤族</option>
+                                                    <option value="畲族">畲族</option>
+                                                    <option value="高山族">高山族</option>
+                                                    <option value="拉祜族">拉祜族</option>
+                                                    <option value="水族">水族</option>
+                                                    <option value="东乡族">东乡族</option>
+                                                    <option value="纳西族">纳西族</option>
+                                                    <option value="景颇族">景颇族</option>
+                                                    <option value="柯尔克孜族">柯尔克孜族</option>
+                                                    <option value="土族">土族</option>
+                                                    <option value="达斡尔族">达斡尔族</option>
+                                                    <option value="仫佬族">仫佬族</option>
+                                                    <option value="羌族">羌族</option>
+                                                    <option value="布朗族">布朗族</option>
+                                                    <option value="撒拉族">撒拉族</option>
+                                                    <option value="毛南族">毛南族</option>
+                                                    <option value="仡佬族">仡佬族</option>
+                                                    <option value="锡伯族">锡伯族</option>
+                                                    <option value="阿昌族">阿昌族</option>
+                                                    <option value="普米族">普米族</option>
+                                                    <option value="塔吉克族">塔吉克族</option>
+                                                    <option value="怒族">怒族</option>
+                                                    <option value="乌孜别克族">乌孜别克族</option>
+                                                    <option value="俄罗斯族">俄罗斯族</option>
+                                                    <option value="鄂温克族">鄂温克族</option>
+                                                    <option value="德昂族">德昂族</option>
+                                                    <option value="保安族">保安族</option>
+                                                    <option value="裕固族">裕固族</option>
+                                                    <option value="京族">京族</option>
+                                                    <option value="塔塔尔族">塔塔尔族</option>
+                                                    <option value="独龙族">独龙族</option>
+                                                    <option value="鄂伦春族">鄂伦春族</option>
+                                                    <option value="赫哲族">赫哲族</option>
+                                                    <option value="门巴族">门巴族</option>
+                                                    <option value="珞巴族">珞巴族</option>
+                                                    <option value="基诺族">基诺族</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                        </div>
+
+
+                                        <h4 class="form-title form-title-first"><i class="icon-th-list"></i>
+                                            联系方式</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label class="col-md-4 control-label">*手机号：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                    name="user_cellphone"
+                                                    type="text"
+                                                    class="form-control"
+                                                    ng-model="user.user_info.user_cellphone"
+                                                    ng-maxlength="11"
+                                                    ng-class="{
+                                                       'error': user_form.user_cellphone.$invalid && user_form.user_cellphone.$dirty,
+                                                       'done': user_form.user_cellphone.$valid && user_form.user_cellphone.$dirty
+                                                    }"
+                                                    required
+                                                    >
+                                                    <label  class="error" for="user_cellphone"
+                                                            ng-show="user_form.user_cellphone.$invalid && user_form.user_cellphone.$dirty">
+                                                            <span ng-show="user_form.user_cellphone.$error.maxlength">手机号最长11位;</span>
+                                                            <span ng-show="user_form.user_cellphone.$error.required">请输入手机号;</span>
+                                                    </label>
+                                                </div>
+                                                <label class="col-md-4 control-label">QQ号：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                    name="user_qq"
+                                                    type="text"
+                                                    class="form-control"
+                                                    ng-model="user.user_info.user_qq"
+                                                    ng-maxlength="11"
+                                                    ng-class="{
+                                                        'error': user_form.user_qq.$invalid && user_form.user_qq.$dirty,
+                                                        'done': user_form.user_qq.$valid && user_form.user_qq.$dirty
+                                                    }"
+                                                    >
+                                                    <label class="error" for="user_qq"
+                                                            ng-show="user_form.user_qq.$invalid && user_form.user_qq.$dirty">
+                                                            <span ng-show="user_form.user_qq.$error.maxlength">qq号最长11位;</span>
+                                                    </label>
+                                                </div>
+                                        </div>
+                                            <div class="col-lg-6">
+                                                <label class="col-md-4 control-label">微信号：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                    name="user_wechat"
+                                                    type="text"
+                                                    class="form-control"
+                                                    ng-model="user.user_info.user_wechat"
+                                                    ng-maxlength="20"
+                                                    ng-class="{
+                                                        'error': user_form.user_wechat.$invalid && user_form.user_wechat.$dirty,
+                                                        'done': user_form.user_wechat.$valid && user_form.user_wechat.$dirty
+                                                    }"
+                                                    >
+                                                    <label class="error" for="user_wechat"
+                                                            ng-show="user_form.user_wechat.$invalid && user_form.user_wechat.$dirty">
+                                                            <span ng-show="user_form.user_wechat.$error.maxlength">微信号最长20位;</span>
+                                                    </label>
+                                                </div>
+
+                                                <label class="col-md-4 control-label">*电子邮箱：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                    name="user_email"
+                                                    type="email"
+                                                    class="form-control"
+                                                    ng-model="user.user_info.user_email"
+                                                    required
+                                                    ng-maxlength="32"
+                                                    ng-class="{
+                                                        'error': user_form.user_email.$invalid && user_form.user_email.$dirty,
+                                                        'done': user_form.user_email.$valid && user_form.user_email.$dirty
+                                                    }"
+                                                    >
+                                                    <label  class="error" for="user_email"
+                                                            ng-show="user_form.user_email.$invalid && user_form.user_email.$dirty">
+                                                            <span ng-show="user_form.user_email.$error.maxlength">邮箱最长32位;</span>
+                                                            <span ng-show="user_form.user_email.$error.required">请输入邮箱;</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="form-title form-title-first"><i class="icon-th-list"></i>
+                                            学籍信息</h4>
+                                            <div ng-repeat="edu in educations ">
+                                                <h5>第{{$index + 1}}学历</h5>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <label class="col-md-4 control-label">*学历：</label>
+                                                            <div class="col-md-8">
+                                                                <select
+                                                                    name="user_edu_{{$index}}"
+                                                                    class="form-control"
+                                                                    ng-model="edu.user_edu"
+                                                                    required
+                                                                    ng-class="{
+                                                                               'error': user_form.user_edu_{{$index}}.$invalid && user_form.user_edu_{{$index}}.$dirty,
+                                                                               'done': user_form.user_edu_{{$index}}.$valid
+                                                                           }"
+                                                                    >
+                                                                    <option value="">请选择学历</option>
+                                                                    <option value="专科">专科</option>
+                                                                    <option value="本科">本科</option>
+                                                                    <option value="硕士研究生">硕士研究生</option>
+                                                                    <option value="博士研究生">博士研究生</option>
+                                                                </select>
+                                                            </div>
+
+                                                        <label class="col-md-4 control-label">班级：</label>
+                                                            <div class="col-md-8">
+                                                            <input
+                                                            name="class_{{$index}}"
+                                                            type="text"
+                                                            class="form-control "
+                                                            ng-model="edu.classes"
+                                                            ng-maxlength="2"
+                                                            ng-class="{
+                                                                 'error': user_form.class_{{$index}}.$invalid && user_form.class_{{$index}}.$dirty,
+                                                                 'done': user_form.class_{{$index}}.$valid && user_form.class_{{$index}}.$dirty
+                                                            }"
+                                                            >
+                                                            <label  class="error" for="class_{{$index}}"
+                                                                    ng-show="user_form.class_{{$index}}.$invalid && user_form.class_{{$index}}.$dirty">
+                                                                    <span ng-show="user_form.class_{{$index}}.$error.maxlength">班级编号最长2位;</span>
+                                                            </label>
+                                                        </div>
+
+                                                        <label class="col-md-4 control-label">*学籍学院：</label>
+                                                            <div class="col-md-8">
+                                                            <select
+                                                                name="get_collage_edu_name_{{$index}}"
+                                                                ng-model="edu.collage_edu"
+                                                                class="form-control"
+                                                                ng-options="c.collage_name_cn for c in collages"
+                                                                ng-change="showSpecialty($index)"
+                                                                ng-class="{
+                                                                   'error': user_form.get_collage_edu_name_{{$index}}.$invalid && user_form.get_collage_edu_name_{{$index}}.$dirty,
+                                                                   'done': user_form.get_collage_edu_name_{{$index}}.$valid
+                                                                }"
+                                                                required>
+                                                                <option value="">请选择学院</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <label class="col-md-4 control-label">*专业：</label>
+                                                            <div class="col-md-8">
+                                                                <select
+                                                                name="get_specialty_by_collage_id_{{$index}}"
+                                                                ng-model="edu.specialty"
+                                                                class="form-control"
+                                                                required
+                                                                ng-options="s.specialty_name_cn for s in edu.specialties"
+                                                                ng-class="{
+                                                                    'error': user_form.get_specialty_by_collage_id_{{$index}}.$invalid && user_form.get_specialty_by_collage_id_{{$index}}.$dirty,
+                                                                    'done': user_form.get_specialty_by_collage_id_{{$index}}.$valid
+                                                                }"
+                                                                >
+                                                                <option value="">请选择专业</option>
+                                                                </select>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="col-md-4 control-label">*入学年份：</label>
+                                                            <div class="col-md-8">
+                                                                <input
+                                                                name="entrance_year_{{$index}}"
+                                                                type="number"
+                                                                class="form-control "
+                                                                ng-model="edu.entrance_year"
+                                                                required
+                                                                ng-class="{
+                                                                    'error': user_form.entrance_year_{{$index}}.$invalid && user_form.entrance_year_{{$index}}.$dirty,
+                                                                    'done': user_form.entrance_year_{{$index}}.$valid
+                                                                }"
+                                                                >
+                                                                <label class="error" for="entrance_year_{{$index}}"
+                                                                        ng-show="user_form.entrance_year_{{$index}}.$invalid && user_form.entrance_year_{{$index}}.$dirty">
+                                                                        <span ng-show="user_form.entrance_year_{{$index}}.$error.required">请输入入学年份;</span>
+                                                                </label>
+                                                                </div>
+
+                                                        <label class="col-md-4 control-label">毕业年份：</label>
+                                                            <div class="col-md-8">
+                                                                <input
+                                                                name="grade_year_{{$index}}"
+                                                                type="number"
+                                                                class="form-control "
+                                                                ng-model="edu.grade_year"
+                                                                ng-class="{
+                                                                   'error': user_form.grade_year_{{$index}}.$invalid && user_form.grade_year_{{$index}}.$dirty,
+                                                                   'done': user_form.grade_year_{{$index}}.$valid
+                                                                }"
+                                                                >
+                                                                <label  class="error" for="grade_year_{{$index}}"
+                                                                        ng-show="user_form.grade_year_{{$index}}.$invalid && user_form.grade_year_{{$index}}.$dirty">
+                                                                </label>
+                                                            </div>
+
+                                                        <label class="col-md-4 control-label">*管理学院：</label>
+                                                            <div class="col-md-8">
+                                                                <select
+                                                                    name="get_collage_{{$index}}"
+                                                                    ng-model="edu.collage"
+                                                                    class="form-control"
+                                                                    ng-options="c.collage_name_cn for c in collages"
+                                                                    ng-class="{
+                                                                       'error': user_form.get_collage_{{$index}}.$invalid && user_form.get_collage_{{$index}}.$dirty,
+                                                                       'done': user_form.get_collage_{{$index}}.$valid
+                                                                    }"
+                                                                    required>
+                                                                    <option value="">请选择学院</option>
+                                                                </select>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button class="btn btn-default" ng-click="addMoreEdu()">添加学历</buttton>
+                                                <button class="btn btn-default" ng-click="delMoreEdu()">删除学历</button>
+                                            </div>
+
+                                        <h4 class="form-title form-title-first"><i class="icon-th-list"></i>
+                                            工作信息</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label class="col-md-4 control-label">行业类型：</label>
+                                                    <div class="col-md-8">
+                                                         <select
+                                                            name="user_industry"
+                                                            ng-model="user_industry"
+                                                            class="form-control"
+                                                            ng-options="industry.industrial_name for industry in industries"
+                                                            ng-change="showIndustry()"
+                                                           >
+                                                         <option value="">请选择行业</option>
+                                                         </select>
+                                                    </div>
+                                                <label class="col-md-4 control-label">工作单位：</label>
+                                                    <div class="col-md-8">
+                                                         <input
+                                                         name="user_workunit"
+                                                         type="text"
+                                                         class="form-control"
+                                                         ng-model="user.user_info.user_workunit"
+                                                         ng-class="{
+                                                            'error': user_form.user_workunit.$invalid && user_form.user_workunit.$dirty,
+                                                            'done': user_form.user_workunit.$valid }"
+                                                         >
+                                                        <label class="error" for="user_name"
+                                                                ng-show="user_form.user_workunit.$invalid && user_form.user_workunit.$dirty">
+                                                        </label>
+                                                    </div>
+                                                <label class="col-md-4 control-label">所在省：</label>
+                                                    <div class="col-md-8">
+                                                        <select
+                                                            name="user_province"
+                                                            ng-model="user_province"
+                                                            class="form-control"
+                                                            ng-options="p.province_name for p in provinces"
+                                                            ng-change="showCity()"
+                                                            >
+                                                            <option value="">请选择所在省</option>
+                                                        </select>
+                                                    </div>
+                                                <label class="col-md-4 control-label">办公电话：</label>
+                                                <div class="col-md-8">
+                                                    <input
+                                                    name="user_officephone"
+                                                    type="text"
+                                                    class="form-control"
+                                                    ng-model="user.user_info.user_officephone"
+                                                    ng-maxlength="11"
+                                                    ng-class="{
+                                                       'error': user_form.user_officephone.$invalid && user_form.user_officephone.$dirty,
+                                                       'done': user_form.user_officephone.$valid && user_form.user_officephone.$dirty
+                                                    }"
+                                                    >
+                                                    <label  class="error" for="user_officephone"
+                                                            ng-show="user_form.user_cellphone.$invalid && user_form.user_cellphone.$dirty">
+                                                            <span ng-show="user_form.user_cellphone.$error.maxlength">办公电话最长11位;</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                    <label class="col-md-4 control-label">职位：</label>
+                                                        <div class="col-md-8">
+                                                            <input
+                                                            name="user_post"
+                                                            type="text"
+                                                            class="form-control"
+                                                            ng-model="user.user_info.user_post"
+                                                            ng-class="{
+                                                                 'error': user_form.user_post.$invalid && user_form.user_post.$dirty,
+                                                                 'done': user_form.user_post.$valid
+                                                            }"
+                                                            >
+                                                            <label class="error" for="user_name"
+                                                                    ng-show="user_form.user_post.$invalid && user_form.user_post.$dirty">
+                                                                    <span ng-show="user_form.user_post.$error.maxlength">职位不得超过20个字符;</span>
+                                                            </label>
+                                                        </div>
+                                                    <label class="col-md-4 control-label">单位地址：</label>
+                                                        <div class="col-md-8">
+                                                            <input
+                                                            name="user_workplace"
+                                                            type="text"
+                                                            class="form-control"
+                                                            ng-model="user.user_info.user_workplace"
+                                                            ng-maxlength="40"
+                                                            ng-class="{
+                                                                'error': user_form.user_workplace.$invalid && user_form.user_workplace.$dirty,
+                                                                'done': user_form.user_workplace.$valid
+                                                                }"
+                                                            >
+                                                            <label  class="error" for="user_workplace"
+                                                                    ng-show="user_form.user_workplace.$invalid && user_form.user_workplace.$dirty">
+                                                                    <span ng-show="user_form.user_workplace.$error.maxlength">单位地址不得超过40个字符;</span>
+                                                            </label>
+                                                        </div>
+                                                    <label class="col-md-4 control-label">所在市：</label>
+                                                        <div class="col-md-8">
+                                                            <select
+                                                            name="user_city"
+                                                            ng-model="user_city"
+                                                            class="form-control"
+                                                            ng-options="c.city_name for c in cities"
+                                                            >
+                                                            <option value="">请选择所在市</option>
+                                                            </select>
+                                                        </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <fieldset class="m-t-md">
+                        <button type="submit"
+                                class="btn btn-primary"
+                                ng-disabled="user_form.$invalid"
+                                ng-click="personDataSubmit()">提交</button>
+                        <a class="btn btn-default" ui-sref="person_info_show">返回</a>
+                    </fieldset>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

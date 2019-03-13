@@ -1,0 +1,163 @@
+<fieldset>
+    <h3>请输入学籍信息，以便您能跟容易地找到其他同学（带*号必填）</h3>
+
+    <div class="row">
+        <section ng-repeat="edu in userdata.user_education"
+                 ng-class="{
+             'col-lg-8': userdata.user_education.length == 1,
+             'col-lg-4': userdata.user_education.length == 2,
+             'col-lg-3': userdata.user_education.length >= 3
+             }">
+            <div class="form-group">
+                <h4 class="section-sub-title">第{{$index + 1}}学历</h4>
+            </div>
+            <div class="form-group">
+                <label>学历 *</label>
+                <label class="error" for="user_edu_{{$index}}"
+                       ng-show="signupForm.user_edu_{{$index}}.$invalid && signupForm.user_edu_{{$index}}.$dirty">
+                    <span ng-show="signupForm.user_edu_{{$index}}.$error.required">请选择学历;</span>
+                </label>
+                <select
+                        name="user_edu_{{$index}}"
+                        class="form-control"
+                        ng-model="edu.user_edu"
+                        required
+                        ng-class="{
+                               'error': signupForm.user_edu_{{$index}}.$invalid && signupForm.user_edu_{{$index}}.$dirty,
+                               'done': signupForm.user_edu_{{$index}}.$valid
+                           }"
+                        >
+                    <option value="">请选择学历</option>
+                    <option value="专科">专科</option>
+                    <option value="本科">本科</option>
+                    <option value="硕士研究生">硕士研究生</option>
+                    <option value="博士研究生">博士研究生</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>学籍学院 *</label>
+                <label class="error" for="get_collage_edu_name_{{$index}}"
+                       ng-show="signupForm.get_collage_edu_name_{{$index}}.$invalid && signupForm.get_collage_edu_name_{{$index}}.$dirty">
+                    <span ng-show="signupForm.get_collage_edu_name_{{$index}}.$error.required">请选择您的学院;</span>
+                </label>
+                <select
+                        name="get_collage_edu_name_{{$index}}"
+                        ng-model="edu.collage_edu_temp"
+                        class="form-control"
+                        ng-options="c.collage_name_cn for c in collages"
+                        ng-change="collageSet($index)"
+                        ng-class="{
+                                   'error': signupForm.get_collage_edu_name_{{$index}}.$invalid && signupForm.get_collage_edu_name_{{$index}}.$dirty,
+                                   'done': signupForm.get_collage_edu_name_{{$index}}.$valid
+                                }"
+                        required>
+                    <option value="">请选择学院</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>专业 *</label>
+                <label class="error" for="get_specialty_by_collage_id_{{$index}}"
+                       ng-show="signupForm.get_specialty_by_collage_id_{{$index}}.$invalid && signupForm.get_specialty_by_collage_id_{{$index}}.$dirty">
+                    <span ng-show="signupForm.get_specialty_by_collage_id_{{$index}}.$error.required">请选择您的学院;</span>
+                </label>
+                <select
+                        name="get_specialty_by_collage_id_{{$index}}"
+                        ng-model="edu.specialty_temp"
+                        class="form-control"
+                        required
+                        ng-options="s.specialty_name_cn for s in edu.specialty_list"
+                        ng-change="specialtySet($index)"
+                        ng-class="{
+                                    'error': signupForm.get_specialty_by_collage_id_{{$index}}.$invalid && signupForm.get_specialty_by_collage_id_{{$index}}.$dirty,
+                                    'done': signupForm.get_specialty_by_collage_id_{{$index}}.$valid
+                                }"
+                        >
+                    <option value="">请选择专业</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>入学年份（级） *</label>
+                <label class="error" for="entrance_year_{{$index}}"
+                       ng-show="signupForm.entrance_year_{{$index}}.$invalid && signupForm.entrance_year_{{$index}}.$dirty">
+                    <span ng-show="signupForm.entrance_year_{{$index}}.$error.required">请输入入学年份;</span>
+                    <span ng-show="signupForm.entrance_year_{{$index}}.$error.minlength || signupForm.entrance_year_{{$index}}.$error.maxlength">年份为四位数字;</span>
+                </label>
+                <input
+                        name="entrance_year_{{$index}}"
+                        type="number"
+                        class="form-control"
+                        ng-model="edu.entrance_year"
+                        required
+                        ng-minlength="4"
+                        ng-maxlength="4"
+                        ng-class="{
+                            'error': signupForm.entrance_year_{{$index}}.$invalid && signupForm.entrance_year_{{$index}}.$dirty,
+                            'done': signupForm.entrance_year_{{$index}}.$valid
+                        }"
+                        >
+            </div>
+            <div class="form-group">
+                <label>毕业年份（届） *</label>
+                <label class="error" for="grade_year_{{$index}}"
+                       ng-show="signupForm.grade_year_{{$index}}.$invalid && signupForm.grade_year_{{$index}}.$dirty">
+                    <span ng-show="signupForm.grade_year_{{$index}}.$error.required">请输入毕业年份;</span>
+                    <span ng-show="signupForm.grade_year_{{$index}}.$error.minlength || signupForm.grade_year_{{$index}}.$error.maxlength">年份为四位数字;</span>
+                </label>
+                <input
+                        name="grade_year_{{$index}}"
+                        type="number"
+                        class="form-control "
+                        ng-model="edu.grade_year"
+                        ng-minlength="4"
+                        ng-maxlength="4"
+                        required
+                        ng-class="{
+                           'error': signupForm.grade_year_{{$index}}.$invalid && signupForm.grade_year_{{$index}}.$dirty,
+                           'done': signupForm.grade_year_{{$index}}.$valid
+                        }"
+                        >
+            </div>
+            <div class="form-group">
+                <label>班级编号 </label>
+                <label class="error" for="class_{{$index}}"
+                       ng-show="signupForm.class_{{$index}}.$invalid && signupForm.class_{{$index}}.$dirty">
+                    <span ng-show="signupForm.class_{{$index}}.$error.maxlength">班级编号最长2位;</span>
+                </label>
+                <input
+                        name="class_{{$index}}"
+                        type="text"
+                        class="form-control "
+                        ng-model="edu.classes"
+                        ng-maxlength="2"
+                        ng-class="{
+                'error': signupForm.class_{{$index}}.$invalid && signupForm.class_{{$index}}.$dirty,
+                'done': signupForm.class_{{$index}}.$valid && signupForm.class_{{$index}}.$dirty
+                }">
+            </div>
+        </section>
+        <div
+             ng-class="{
+             'col-lg-4': userdata.user_education.length < 3,
+             'col-lg-3': userdata.user_education.length >= 3
+             }">
+            <div class="form-group">
+                <button type="button"
+                        style="height:100px; margin-top: 100px;"
+                        ng-click="addEduInfo()"
+                        ng-show="userdata.user_education.length<4"
+                        class="btn btn-info btn-lg btn-round form-control">
+                    还读过研究生或双学位？</br>点击添加更多学籍信息
+                </button>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="m-t-md">
+    <a ui-sref="signup.step_two" class="btn btn-default put-left">上一步</a>
+    <a ui-sref="signup.step_four"
+       ng-disabled="!eduVerification()"
+       ng-click="localStorageSet()"
+       class="btn btn-primary put-left">下一步</a>
+    <a ui-sref="alumnus" class="btn btn-default pull-right">返回</a>
+</fieldset>

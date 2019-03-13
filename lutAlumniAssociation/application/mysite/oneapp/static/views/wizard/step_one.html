@@ -1,0 +1,83 @@
+<fieldset>
+    <h3>请您填写账号信息，以便之后登录本系统（带*号必填）</h3>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="form-group">
+                <label>登陆邮箱 *</label>
+                <label id="user_account_error" class="error" for="user_account"
+                       ng-show="signupForm.user_account.$invalid && signupForm.user_account.$dirty">
+                    <span ng-show="signupForm.user_account.$error.email">邮箱输入错误;</span>
+                    <span ng-show="signupForm.user_account.$error.required">请输入邮箱;</span>
+                    <span ng-show="signupForm.user_account.$error.minlength">登陆邮箱不能少于8位;</span>
+                    <span ng-show="signupForm.user_account.$error.maxlength">登陆邮箱不能多于32位;</span>
+                    <span ng-show="signupForm.user_account.$error.checkaccount">邮箱已被占用</span>
+                </label>
+                <input id="user_account"
+                       ng-model="userdata.user_info.user_account"
+                       name="user_account" 
+                       type="email"
+                       class="form-control"
+                       check-account
+                       required
+                       ng-class="{'error': signupForm.user_account.$invalid && signupForm.user_account.$dirty, 'done': signupForm.user_account.$valid }"
+                       ng-minlength="8"
+                       ng-maxlength="32">
+            </div>
+            <div class="form-group">
+                <label>密码 *</label>
+                <label id="user_pwd_error" class="error" for="user_pwd"
+                       ng-show="signupForm.user_pwd.$invalid && signupForm.user_pwd.$dirty">
+                    <span ng-show="signupForm.user_pwd.$error.required">请输入密码;</span>
+                    <span ng-show="signupForm.user_pwd.$error.minlength">密码不能少于8位;</span>
+                    <span ng-show="signupForm.user_pwd.$error.maxlength">密码不能大于12位;</span>
+                </label>
+                <input id="user_pwd"
+                       ng-model="userdata.user_info.user_pwd"
+                       name="user_pwd"
+                       type="password"
+                       class="form-control"
+                       required
+                       ng-minlength="8"
+                       ng-maxlength="12"
+                       ng-class="{'error': signupForm.user_pwd.$invalid && signupForm.user_pwd.$dirty, 'done': signupForm.user_pwd.$valid }">
+            </div>
+            <div class="form-group">
+                <label>确认密码 *</label>
+                <label id="confirm_pwd_error" class="error" for="user_pwd"
+                       ng-show="signupForm.confirm_pwd.$invalid && signupForm.confirm_pwd.$dirty">
+                    <span ng-show="signupForm.confirm_pwd.$error.required">请再输入一次密码;</span>
+                    <span ng-show="signupForm.confirm_pwd.$error.pwmatch">两次密码输入不一致;</span>
+                </label>
+                <input
+                        id="confirm"
+                        name="confirm_pwd"
+                        ng-model="confirm_pwd"
+                        type="password"
+                        class="form-control"
+                        required
+                        ng-class="{'error': signupForm.confirm_pwd.$invalid && signupForm.confirm_pwd.$dirty, 'done': signupForm.confirm_pwd.$valid }"
+                        pw-match="user_pwd"
+                        >
+
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="text-center">
+                <div style="margin-top: 20px">
+                    <i class="fa fa-sign-in" style="font-size: 100px;color: #e5e5e5 "></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a ui-sref="signup.step_two"
+           ng-disabled="
+        signupForm.confirm_pwd.$invalid ||
+        signupForm.user_pwd.$invalid ||
+        signupForm.user_account.$invalid"
+           ng-click="localStorageSet()"
+           class="btn btn-primary put-left" >下一步</a>
+        <a ui-sref="alumnus"  class="btn btn-default pull-right">返回</a>
+    </div>
+</fieldset>

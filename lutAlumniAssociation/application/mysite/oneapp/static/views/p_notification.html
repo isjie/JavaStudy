@@ -1,0 +1,115 @@
+<div id="first_edu"
+     class="animate-vertical-slide"
+     ng-class="{
+             'col-lg-8': !formData.edu[1].show && !formData.edu[2].show,
+             'col-lg-4': formData.edu[1].show
+             }">
+    <div class="form-group">
+        <h4 class="section-sub-title">第一学历</h4>
+    </div>
+    <div class="form-group">
+        <label>学历 *</label>
+        <select id="user_edu"
+                name="user_edu"
+                ng-model="formData.edu[0].user_edu"
+                class="form-control"
+                ng-class="{
+                           'error': signupForm.edu[0].user_edu.$invalid && signupForm.edu[0].user_edu.$dirty,
+                           'done': signupForm.edu[0].user_edu.$valid
+                       }"
+                required>
+            <option value="专科">专科</option>
+            <option value="本科">本科</option>
+            <option value="硕士研究生">硕士研究生</option>
+            <option value="博士研究生">博士研究生</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>学籍学院 *</label>
+        <label id="user_pwd_error" class="error" for="collage_edu_id"
+               ng-show="signupForm.edu[0].collage_edu_id.$invalid && signupForm.edu[0].collage_edu_id.$dirty">
+            <span ng-show="signupForm.edu[0].collage_edu_id.$error.required">请输入真实姓名;</span>
+            <span ng-show="signupForm.edu[0].collage_edu_id.$error.maxlength">姓名不得超过20个字符;</span>
+        </label>
+        <input id="collage_edu_id"
+               name="collage_edu_id"
+               ng-model="formData.edu[0].collage_edu_id"
+               type="text"
+               class="form-control required"
+               required
+               ng-class="{
+                           'error': signupForm.edu[0].collage_edu_id.$invalid && signupForm.edu[0].collage_edu_id.$dirty,
+                           'done': signupForm.edu[0].collage_edu_id.$valid
+                       }"
+               ng-maxlength="20">
+    </div>
+    <div class="form-group">
+        <label>专业 *</label>
+        <label id="user_cellphone_error" class="error" for="specialty_id"
+               ng-show="signupForm.edu[0].specialty_id.$invalid && signupForm.edu[0].specialty_id.$dirty">
+            <span ng-show="signupForm.edu[0].specialty_id.$error.maxlength">手机号最长11位;</span>
+            <span ng-show="signupForm.edu[0].specialty_id.$error.number">请输入数字;</span>
+        </label>
+        <input id="specialty_id"
+               name="specialty_id"
+               type="text"
+               ng-model="formData.edu[0].specialty_id"
+               class="form-control"
+               ng-class="{
+                           'error': signupForm.edu[0].specialty_id.$invalid && signupForm.edu[0].specialty_id.$dirty,
+                           'done': signupForm.edu[0].specialty_id.$valid && signupForm.edu[0].specialty_id.$dirty
+                       }"
+               ng-maxlength="11">
+    </div>
+    <div class="form-group">
+        <label>班级编号 </label>
+        <label id="class_error" class="error" for="class"
+               ng-show="signupForm.edu[0].class.$invalid && signupForm.edu[0].class.$dirty">
+            <span ng-show="signupForm.edu[0].class.$error.maxlength">班级编号最长2位;</span>
+        </label>
+        <input id="class"
+               name="class"
+               type="number"
+               ng-model="formData.edu[0].class"
+               class="form-control"
+               ng-class="{
+                           'error': signupForm.edu[0].class.$invalid && signupForm.edu[0].class.$dirty,
+                           'done': signupForm.edu[0].class.$valid && signupForm.edu[0].class.$dirty
+                       }"
+               ng-maxlength="2">
+    </div>
+    <div class="form-group">
+        <label>入学年份（级） *</label>
+        <label id="user_birthday_error" class="error" for="entrance_year"
+               ng-show="signupForm.edu[0].entrance_year.$invalid && signupForm.edu[0].entrance_year.$dirty">
+            <span ng-show="signupForm.edu[0].entrance_year.$error.required">请输入出生年月;</span>
+        </label>
+        <input id="entrance_year"
+               name="entrance_year"
+               ng-model="formData.edu[0].entrance_year"
+               type="number"
+               class="form-control"
+               ng-class="{
+                           'error': signupForm.edu[0].entrance_year.$invalid && signupForm.edu[0].entrance_year.$dirty,
+                           'done': signupForm.edu[0].entrance_year.$valid
+                       }"
+               required>
+    </div>
+    <div class="form-group">
+        <label>毕业年份（届） *</label>
+        <label id="grade_year_error" class="error" for="grade_year"
+               ng-show="signupForm.edu[0].grade_year.$invalid && signupForm.edu[0].grade_year.$dirty">
+            <span ng-show="signupForm.edu[0].grade_year.$error.required">请输入出生年月;</span>
+        </label>
+        <input id="grade_year"
+               name="grade_year"
+               ng-model="formData.edu[0].grade_year"
+               type="number"
+               class="form-control"
+               ng-class="{
+                           'error': signupForm.edu[0].grade_year.$invalid && signupForm.edu[0].grade_year.$dirty,
+                           'done': signupForm.edu[0].grade_year.$valid
+                       }"
+               required>
+    </div>
+</div>

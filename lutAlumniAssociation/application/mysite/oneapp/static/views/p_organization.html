@@ -1,0 +1,74 @@
+<div class="col-md-9" ng-controller="organizationCtrl">
+    <div class="content-wrapper">
+        <div class="content-inner">
+            <div class="page-header">
+                <header data-ng-include=" '/static/views/c_header.html' "></header>
+                <h1><i class="fa fa-id-card-o"></i> 校友组织管理</h1>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="widget">
+                        <form action="" role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="button" id="search_button">
+                                                <i class="fa fa-search"></i>&nbsp;<span></span>
+                                            </button>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="校友组织搜索...">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <hr class="breadcrumb">
+                    </div>
+
+                    <div class="widget">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="btn-toolbar">
+                                    <div class="  pull-left">
+                                        <h5 class="title">校友组织基本信息：</h5>
+                                    </div>
+                                    <div class=" pull-right">
+                                        <button class="btn btn-default btn-sm dropdown-toggle "
+                                            type="button" data-toggle="dropdown">
+                                            <i class="fa fa-gear"></i>&nbsp;选中操作 <span
+                                            class="caret"></span>
+                                        </button>
+                                        <a class="btn btn-info btn-sm btn-user" role="button" ui-sref="upload_alumnus">
+                                            <em class="fa fa-file-excel-o"></em>
+                                            &nbsp;导入
+                                        </a>
+                                        <button class="btn btn-success btn-sm btn-user">
+                                            <em class="fa fa-file-excel-o"></em>
+                                            &nbsp;导出
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content bottom-margin">
+                            <div class="tab-pane active">
+                                <div class="padded">
+                                    <!--第三页，工作详情表格-->
+                                    <div id="workinfo_table"
+                                         style="height: 333px"
+                                         ui-grid="org_table_options"
+                                         ui-grid-selection
+                                         class="grid"
+                                            >
+                                    </div>
+                                </div>
+                                <!--调用自定义的分页器，详见app-directive.js -->
+                                <page-navgation pages="pages"></page-navgation>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+{% verbatim %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta content='text/html;' http-equiv='Content-Type' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="兰州理工大学校友信息系统"/>
+    <meta name="author" content="Zhang Di">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="LUT alumni">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel='stylesheet' href='/static/assets/scss/font-awesome-4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='/static/assets/css/app.css'>
+    <link rel='stylesheet' href='/static/assets/css/jquery.steps.css'>
+    <link rel='stylesheet' href='/static/libs/toastr.2.2.1/toastr.css'>
+    <link rel="stylesheet" href="/static/libs/jquery.ui.1.10.3/jquery-ui-bootstrap-css/jquery-ui-1.10.0.custom.css">
+    <link rel='stylesheet' href='/static/libs/ui-grid.4.0.6/ui-grid.css'>
+    <link rel='stylesheet' href='/static/assets/css/reset.css'>
+
+    <!-- Le fav and touch icons -->
+    <link href="/static/assets/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/static/assets/apple-touch-icon.png" rel="apple-touch-icon" type="image/x-icon">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    @javascript html5shiv respond.min
+    <script type="text/javascript" src="/static/lib/IE8-hacker/html5shiv.js"></script>
+    <script type="text/javascript" src="/static/lib/IE8-hacker/respond.min.js"></script>
+    <![endif]-->
+    <title>兰州理工大学校友会</title>
+</head>
+
+<body  ng-cloak class="ng-cloak body-blue" id="app">
+
+<div class="all-wrapper"
+     ng-class="{'no-menu-wrapper': page_name == 'signin' || page_name == 'signup'}"
+     data-ng-controller="AppCtrl">
+
+    <div class="row">
+        <aside data-ng-include=" '/static/views/c_sidebar.html' "
+               ng-hide="page_name == 'signin' || page_name == 'signup'"></aside>
+        <section ui-view id="content" class="animate-fade-up"></section>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="/static/libs/require/require.js" data-main="/static/scripts/main.js"></script>
+</body>
+</html>
+
+{% endverbatim %}

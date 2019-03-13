@@ -1,0 +1,36 @@
+
+教育发展基金会网站
+软件：蝉知CMS系统，linux centOS 64位系统，php5.3, mysql搭建
+域名：jjh.lut.cn
+IP地址：202.201.39.48
+后台登陆地址：http://202.201.39.48/jijinhui.php
+后台账号：zhangdi
+后台密码：1q2w3e4r
+服务器账号：root
+服务器密码：S8J"5@13WQy-wHV5
+============================================
+
+
+校友数据库平台
+软件：自制软件，linux centOS 64位系统，python3.6, angularjs1.5, mysql搭建
+域名：xysjk.lut.cn
+IP地址：202.201.38.70
+后台登陆地址：xysjk.lut.cn:8000/angular
+后台超级管理员账号：admin@lut.cn
+后台密码：123456
+服务器账号：root
+服务器密码：Xiaoyouhui@123
+
+======================================
+计通学院新网站
+软件：蝉知CMS系统，linux centOS 64位系统，php5.3, mysql搭建
+域名：（暂定为jitong.lut.cn,暂时还未配置）
+IP地址：202.201.39.51
+后台登陆地址：http://202.201.39.51/jitong.php
+后台账号：sumqzm
+后台密码：140213
+服务器账号：root
+服务器密码：Jitong@123
+
+连接服务器传文件的软件：winscp
+连接服务器输命令的软件：VNC

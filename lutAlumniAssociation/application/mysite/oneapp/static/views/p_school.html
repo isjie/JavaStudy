@@ -1,0 +1,228 @@
+<div class="col-md-9" ng-controller="schoolCtrl">
+    <div class="content-wrapper">
+        <div class="content-inner">
+            <div class="page-header">
+                <header data-ng-include=" '/static/views/c_header.html' "></header>
+                <h1><i class="fa fa-building-o"></i> 学校信息管理</h1>
+            </div>
+            <ol class="breadcrumb">
+                <li >说明：此页面用于维护学校下属院系专业相关数据。由于修改这些信息会影响到所有相关院系的校友，请谨慎修改。</li>
+            </ol>
+            <div class="main-content">
+                <div class="row">
+                    <div class="widget">
+                        <div class="tree">
+                            <ul>
+                                <li>
+                                    <span><i class="icon-folder-open"></i>兰州理工大学</span>
+
+                                    <a href="" ng-click="showChangeUniversity()"><i class="fa fa-wrench"
+                                                                                    aria-hidden="true"></i></a>
+
+                                    <div class="widget-content-white glossed dashboard"
+                                         ng-show="ChangeUniversityshow">
+                                        <div class="padded">
+                                            <form action="" role="form" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">修改学校名称</label>
+
+                                                    <div class="col-md-5">
+                                                        <input type="text" class="form-control"
+                                                               ng-model="c.collage_name_cn"
+                                                               placeholder="">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button class="btn btn-primary"
+                                                                ng-click="">确定
+                                                        </button>
+                                                        <button class="btn btn-default"
+                                                                ng-click="showChangeUniversity()">取消
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <a href="" ng-click="showAddCollage()"><i class="fa fa-plus-square "
+                                                                              ng-class="{
+                                                          'fa-plus-square': add_collage_show == false,
+                                                          'fa-minus-square': add_collage_show == true
+
+                                                          }"
+                                                                              aria-hidden="true"></i></a>
+
+                                    <div class="widget-content-white glossed dashboard" ng-show="add_collage_show">
+                                        <div class="padded">
+                                            <form name="add_collage_from" action="" role="form" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="col-md-3 control-label">添加学院名称</label>
+                                                    <label id="add_collage" class="error" for="add_collage_workunit"
+                                                           ng-show="add_collage_from.add_collage_workunit.$invalid && add_collage_from.add_collage_workunit.$dirty">
+                                                        <span ng-show="add_collage_from.add_collage_workunit.$error.maxlength">此字段最长20个字符;</span>
+                                                        <span ng-show="add_collage_from.add_collage_workunit.$error.keywordmatch">禁止奇怪的字符输入;</span>
+                                                        <span ng-show="add_collage_from.add_collage_workunit.$error.required">请输入新的学院名称;</span>
+                                                    </label>
+                                                    <div class="col-md-5">
+                                                        <input id="add_collage_workunit"
+                                                               ng-model="c.collage_name_cn"
+                                                               keyword-match
+                                                               name="add_collage_workunit"
+                                                               type="text"
+                                                               ng-maxlength="20"
+                                                               class="form-control"
+                                                               ng-class="{'error': add_collage_from.add_collage_workunit.$invalid && add_collage_from.add_collage_workunit.$dirty,
+                                                                          'done': add_collage_from.add_collage_workunit.$valid }"
+                                                               placeholder="{{c.collage_name_cn}}"
+                                                               required>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button class="btn btn-primary"
+                                                                ng-click="addCollageName(c)">确定
+                                                        </button>
+                                                        <button class="btn btn-default"
+                                                                ng-click="showAddCollage(c)">取消
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <ul>
+                                        <li ng-repeat="c in collages.slice().reverse() " class="parent_li">
+                                            <span ng-click="showSpecialty(c)">
+                                                <i class="fa" ng-class="{
+                                            'fa-plus-circle': c.specialties.length == 0,
+                                            'fa-minus-circle': c.specialties.length >0 }"
+                                                     aria-hidden="true"></i>
+                                                  {{c.collage_name_cn}}
+                                            </span>
+
+                                            <a href="" ng-click="showChangeCollage(c)"><i class="fa fa-wrench"
+                                                                                          ng-class="{
+                                                          'fa-wrench': c.change_Collage_show == false,
+                                                          'fa-wrench fa-rotate-90': c.change_Collage_show == true
+                                                          }"
+                                                                                          aria-hidden="true"></i></a>
+                                            <a href=""><i class="fa fa-plus-square"
+                                                          ng-class="{
+                                                          'fa-plus-square': c.add_specialty_show == false,
+                                                          'fa-minus-square': c.add_specialty_show == true
+                                                          }"
+                                                          aria-hidden="true" ng-click="showAddSpecialty(c)"></i></a>
+
+                                            <div class="widget-content-white glossed dashboard"
+                                                 ng-show="c.change_Collage_show">
+                                                <div class="padded">
+                                                    <form name="change_collage_from_{{$index}}" action="" role="form" class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">修改学院名称</label>
+                                                            <label id="change_Collage" class="error" for="change_Collage_workunit"
+                                                                   ng-show="change_Collage_from_{{$index}}.change_Collage_workunit.$invalid && change_Collage_from_{{$index}}.change_Collage_workunit.$dirty">
+                                                                <span ng-show="change_Collage_from_{{$index}}.change_Collage_workunit.$error.maxlength">此字段最长20个字符;</span>
+                                                                <span ng-show="change_Collage_from_{{$index}}.change_Collage_workunit.$error.keywordmatch">禁止奇怪的字符输入;</span>
+                                                                <span ng-show="change_Collage_from_{{$index}}.change_Collage_workunit.$error.required">请输入新的学院名称;</span>
+                                                            </label>
+                                                            <div class="col-md-5">
+                                                                <input id="change_collage_workunit"
+                                                                       ng-model="c.collage_name_cn"
+                                                                       keyword-match
+                                                                       name="change_collage_workunit"
+                                                                       type="text"
+                                                                       ng-maxlength="20"
+                                                                       class="form-control"
+                                                                       placeholder="{{c.collage_name_cn}}"
+                                                                       ng-class="{'error': change_collage_from_{{$index}}.change_collage_workunit.$invalid && change_collage_from_{{$index}}.change_collage_workunit.$dirty,
+                                                                          'done': change_collage_from_{{$index}}.change_collage_workunit.$valid }"
+                                                                       required>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <button class="btn btn-primary"
+                                                                        ng-click="changeCollageName(c)">确定
+                                                                </button>
+                                                                <button class="btn btn-default"
+                                                                        ng-click="showChangeCollage(c)">取消
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="widget-content-white glossed dashboard"
+                                                 ng-show="c.add_specialty_show">
+                                                <div class="padded">
+                                                    <form action="" role="form" class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-md-3 control-label">添加专业名称</label>
+
+                                                            <div class="col-md-5">
+                                                                <input type="text" class="form-control"
+                                                                       ng-model="c.specialty_name_cn"
+                                                                       placeholder="{{c.specialty_name_cn}}">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <button class="btn btn-primary"
+                                                                        ng-click="addSpecialtyName(c)">确定
+                                                                </button>
+                                                                </button>
+                                                                <button class="btn btn-default"
+                                                                        ng-click="showAddSpecialty(c)">取消
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <ul>
+                                                <li ng-repeat="s in c.specialties.slice().reverse()" class="parent_li">
+                                                    <span><i
+                                                            class="fa fa-leaf"
+                                                            aria-hidden="true"></i>&nbsp;{{s.specialty_name_cn}}</span>
+                                                    <a href="" ng-click="showChangeSpecialty(s)"><i class="fa fa-wrench"
+                                                                                                    ng-class="{
+                                                          'fa-wrench': s.change_specialty_show == false,
+                                                          'fa-wrench fa-rotate-90': s.change_specialty_show == true
+                                                          }"
+                                                                                                    aria-hidden="true "></i></a>
+
+                                                    <div class="widget-content-white glossed dashboard"
+                                                         ng-show="s.change_specialty_show">
+                                                        <div class="padded">
+                                                            <form action="" role="form" class="form-horizontal">
+                                                                <div class="form-group">
+                                                                    <label class="col-md-3 control-label">修改专业名称</label>
+
+                                                                    <div class="col-md-5">
+                                                                        <input type="text" class="form-control"
+                                                                               ng-model="s.specialty_name_cn"
+                                                                               placeholder="{{s.specialty_name_cn}}">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <button class="btn btn-primary"
+                                                                                ng-click="changeSpecialtyName(s)">确定
+                                                                        </button>
+                                                                        <button class="btn btn-default"
+                                                                                ng-click="showChangeSpecialty(s)">取消
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

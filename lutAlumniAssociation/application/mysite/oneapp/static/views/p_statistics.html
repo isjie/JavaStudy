@@ -1,0 +1,96 @@
+<div class="col-md-9" ng-controller="statisticCtrl">
+    <div class="content-wrapper">
+        <div class="content-inner">
+            <div class="page-header">
+                <header data-ng-include=" '/static/views/c_header.html' "></header>
+                <h1><i class="fa fa-bar-chart"></i> 校友统计</h1>
+            </div>
+
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="widget" id="line_chart_anchor">
+                            <div class="widget-content-white">
+                                <div class="shadowed-bottom bottom-margin">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8 col-sm-6 bordered">
+                                            <div class="value-block padded-left">
+                                                <div class="value-self">
+                                                    校友地理分布统计
+                                                </div>
+                                                <div class="value-sub">Alumni geographic distribution</div>
+                                            </div>
+                                            <!--<div class="value-block value-bigger changed-up some-left-padding">-->
+                                            <!--<div class="value-self">-->
+                                            <!--校友地理分布统计-->
+                                            <!--</div>-->
+                                            <!--<div class="value-sub">Alumni geographic distribution</div>-->
+                                            <!--</div>-->
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-6">
+                                            <form class="form-inline form-period-selector">
+                                                <label class="control-label">时间范围:</label><br>
+                                                <input type="text" placeholder="01/12/2017"
+                                                       class="form-control input-sm">
+                                                <input type="text" placeholder="01/12/2015"
+                                                       class="form-control input-sm">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="padded">
+                                    <div id="chart_map" style="height:500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="widget">
+                            <div class="widget-content-white">
+                                <div class="shadowed-bottom bottom-margin">
+
+                                    <div class="value-block padded-left">
+                                        <div class="value-self">
+                                            历年毕业人数统计
+                                        </div>
+                                        <div class="value-sub">Graduation statistics by year</div>
+                                    </div>
+
+                                </div>
+                                <div class="padded">
+                                    <div id="chart_line" style="height:500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="widget">
+                            <div class="widget-content-white">
+                                <div class="shadowed-bottom bottom-margin">
+
+                                    <div class="value-block padded-left">
+                                        <div class="value-self">
+                                            校友行业分布
+                                        </div>
+                                        <div class="value-sub">Alumni industry distribution</div>
+                                    </div>
+                                </div>
+                                <div class="padded">
+                                    <div id="chart_pie" style="height:500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,161 @@
+<div class="col-md-9" ng-controller="person_pwd_ctrl">
+    <div class="content-wrapper">
+        <div class="content-inner">
+            <div class="page-header">
+                <header data-ng-include=" '/static/views/c_header.html' "></header>
+                <h1><i class="fa fa-id-card-o"></i> 密码管理</h1>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="widget" >
+                        <div class="tab-content bottom-margin">
+                            <form name="password_form" class="form-horizontal">
+                                <div class="form-horizontal">
+                                    <div class="shadowed-bottom">
+                                                <p>验证密码</p>
+                                            </div>
+                                    <div class="padded">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">请输入原始密码</label>
+                                            <label class="error" for="password"
+                                                   ng-show="password_form.password.$invalid && password_form.password.$dirty">
+                                                <span ng-show="password_form.password.$error">请输入密码;</span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="password"
+                                                       name="password"
+                                                       class="form-control"
+                                                       placeholder="请输入密码"
+                                                       ng-model="confirmPwd.old_pwd"
+                                                       required >
+                                                <!--{{ confirmPwd.old_pwd }}-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">请输入新密码</label>
+                                            <label class="error" for="user_pwd"
+                                                   ng-show="password_form.user_pwd.$invalid && password_form.user_pwd.$dirty">
+                                                <span ng-show="password_form.user_pwd.$error.required">请输入密码;</span>
+                                                <span ng-show="password_form.user_pwd.$error.minlength">密码不能少于6位;</span>
+                                                <span ng-show="password_form.user_pwd.$error.maxlength">密码不能大于12位;</span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                 <input id="user_pwd"
+                                                       ng-model="confirmPwd.user_pwd"
+                                                       name="user_pwd"
+                                                       type="password"
+                                                       class="form-control"
+                                                       required
+                                                       ng-minlength="6"
+                                                       ng-maxlength="12"
+                                                       ng-class="{'error': password_form.user_pwd.$invalid && password_form.user_pwd.$dirty,
+                                                                'done': password_form.user_pwd.$valid }">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">请确认新密码</label>
+                                            <label class="error" for="confirm_pwd"
+                                                   ng-show="password_form.confirm_pwd.$invalid && password_form.confirm_pwd.$dirty">
+                                                <span ng-show="password_form.confirm_pwd.$error.required">请再输入一次密码;</span>
+                                                <span ng-show="password_form.confirm_pwd.$error.pwmatch">两次密码输入不一致;</span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                 <input
+                                                        id="confirm"
+                                                        name="confirm_pwd"
+                                                        ng-model="confirmPwd.confirm_pwd"
+                                                        type="password"
+                                                        class="form-control"
+                                                        required
+                                                        ng-class="{'error': password_form.confirm_pwd.$invalid && password_form.confirm_pwd.$dirty,
+                                                                'done': password_form.confirm_pwd.$valid }"
+                                                        pw-match="user_pwd"
+                                                        >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-4 col-md-8">
+                                                <button class=" btn btn-primary" ng-click="resetPwd()">确定
+                                                </button>
+                                                &nbsp;&nbsp;
+                                                <button class=" btn btn-default" type="reset">重置</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-horizontal" ng-show="show_newpwd_form">
+                                        <div class="shadowed-bottom">
+                                            <p>验证密码</p>
+                                        </div>
+                                        <div class="padded">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">请输入新密码</label>
+                                                <label class="error" for="user_pwd"
+                                                       ng-show="password_form.user_pwd.$invalid && password_form.user_pwd.$dirty">
+                                                    <span ng-show="password_form.user_pwd.$error.required">请输入密码;</span>
+                                                    <span ng-show="password_form.user_pwd.$error.minlength">密码不能少于6位;</span>
+                                                    <span ng-show="password_form.user_pwd.$error.maxlength">密码不能大于12位;</span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                     <input id="user_pwd"
+                                                           ng-model="confirmPwd.user_pwd"
+                                                           name="user_pwd"
+                                                           type="password"
+                                                           class="form-control"
+                                                           required
+                                                           ng-minlength="6"
+                                                           ng-maxlength="12"
+                                                           ng-class="{'error': password_form.user_pwd.$invalid && password_form.user_pwd.$dirty,
+                                                                    'done': password_form.user_pwd.$valid }">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">请确认新密码</label>
+                                                <label class="error" for="confirm_pwd"
+                                                       ng-show="password_form.confirm_pwd.$invalid && password_form.confirm_pwd.$dirty">
+                                                    <span ng-show="password_form.confirm_pwd.$error.required">请再输入一次密码;</span>
+                                                    <span ng-show="password_form.confirm_pwd.$error.pwmatch">两次密码输入不一致;</span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                     <input
+                                                            id="confirm"
+                                                            name="confirm_pwd"
+                                                            ng-model="confirmPwd.confirm_pwd"
+                                                            type="password"
+                                                            class="form-control"
+                                                            required
+                                                            ng-class="{'error': password_form.confirm_pwd.$invalid && password_form.confirm_pwd.$dirty,
+                                                                    'done': password_form.confirm_pwd.$valid }"
+                                                            pw-match="user_pwd"
+                                                            >
+                                                </div>
+                                            </div>
+                                            <fieldset class="m-t-md">
+                                                <div class="col-md-offset-4 col-md-8">
+                                                    <button type="submit"
+                                                            class="btn btn-primary"
+                                                            ng-disabled="password_form.$invalid"
+                                                            ng-click="PasswordDataSubmit()">确定</button>
+                                                    <button class=" btn btn-default" type="reset">重置</button>
+                                                </div>
+                                            </fieldset>
+                                            &lt;!&ndash;
+                                            <div class="form-group">
+                                                <div class="col-md-offset-4 col-md-8">
+                                                    <button class=" btn btn-primary">确定</button>
+                                                    &nbsp;&nbsp;
+                                                    <button class=" btn btn-default" type="reset">重置</button>
+                                                </div>
+                                            </div>
+                                            &ndash;&gt;
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

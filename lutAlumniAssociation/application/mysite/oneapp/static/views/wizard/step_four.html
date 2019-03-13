@@ -1,0 +1,125 @@
+<fieldset>
+    <h2>请填写工作信息，以便我们能更好地为您服务（带*号必填）</h2>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="form-group">
+                <label>行业类型 {{userdata.user_info.industrial_name}} {{userdata.user_info.industrial_id}}</label>
+                <select id="industrial"
+                        name="industrial"
+                        ng-model="userdata.user_info.industrial_temp"
+                        ng-change="industrySet(userdata.user_info.industrial_temp)"
+                        class="form-control"
+                        ng-class="{
+                           'error': signupForm.industry.$invalid && signupForm.industry.$dirty,
+                           'done': signupForm.industry.$valid
+                       }"
+                        ng-options="industry.industrial_name for industry in industries">
+                    <option value="">请选择行业</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>工作单位 {{userdata.user_info.user_workunit}}</label>
+                <label id="user_account_error" class="error" for="user_workunit"
+                       ng-show="signupForm.user_workunit.$invalid && signupForm.user_workunit.$dirty">
+                    <span ng-show="signupForm.user_workunit.$error.maxlength">此字段最长50个字符;</span>
+                    <span ng-show="signupForm.user_workunit.$error.keywordmatch">禁止输入非法字符;</span>
+                </label>
+                <input id="user_workunit"
+                       ng-model="userdata.user_info.user_workunit"
+                       keyword-match
+                       name="user_workunit"
+                       type="text"
+                       ng-maxlength="50"
+                       class="form-control"
+                       ng-class="{'error': signupForm.user_workunit.$invalid && signupForm.user_workunit.$dirty, 'done': signupForm.user_workunit.$valid }"
+                      >
+            </div>
+
+            <div class="form-group">
+                <label>职位 </label>
+                <label id="user_pwd_error" class="error" for="user_post"
+                       ng-show="signupForm.user_post.$invalid && signupForm.user_post.$dirty">
+                        <span ng-show="signupForm.user_post.$error.maxlength">此字段最长15个字符;</span>
+                        <span ng-show="signupForm.user_post.$error.keywordmatch">禁止输入非法字符;</span>
+                </label>
+                <input id="user_post"职位名称
+                       ng-model="userdata.user_info.user_post"
+                       name="user_post"
+                       keyword-match
+                       ng-maxlength="15"
+                       type="text"
+                       class="form-control"
+                       ng-class="{'error': signupForm.user_post.$invalid && signupForm.user_post.$dirty, 'done': signupForm.user_post.$valid }">
+            </div>
+
+            <div class="form-group">
+                <label>所在省 {{userdata.user_info.user_province}} {{userdata.user_info.province_id}}</label>
+                <select id="user_province"
+                        name="user_province"
+                        ng-model="userdata.user_info.province_temp"
+                        class="form-control"
+                        ng-class="{
+                           'error': signupForm.user_province.$invalid && signupForm.user_province.$dirty,
+                           'done': signupForm.user_province.$valid
+                       }"
+                        ng-options="p.province_name for p in provinces"
+                        ng-change="provinceSet(userdata.user_info.province_temp)"
+                        >
+                    <option value="">请选择所在省</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>所在市 {{userdata.user_info.user_city}} {{userdata.user_info.city_id}}</label>
+                <select id="user_city"
+                        name="user_city"
+                        ng-model="userdata.user_info.city_temp"
+                        ng-change="citySet(userdata.user_info.city_temp)"
+                        class="form-control"
+                        ng-class="{
+                           'error': signupForm.user_city.$invalid && signupForm.user_city.$dirty,
+                           'done': signupForm.user_city.$valid
+                       }"
+                        ng-options="c.city_name for c in cities"
+                        required>
+                    <option value="">请选择所在市</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>单位地址名称 {{userdata.user_info.user_workplace}}</label>
+                <label id="user_workplace_error" class="error" for="user_workplace"
+                       ng-show="signupForm.user_workplace.$invalid && signupForm.user_workplace.$dirty">
+                    <span ng-show="signupForm.user_workplace.$error.maxlength">此字段最长50个字符;</span>
+                    <span ng-show="signupForm.user_workplace.$error.keywordmatch">禁止输入非法字符;</span>
+                </label>
+                <input
+                        id="user_workplace"
+                        name="user_workplace"
+                        ng-model="userdata.user_info.user_workplace"
+                        type="text"
+                        class="form-control"
+                        keyword-match
+                        ng-maxlength="50"
+                        ng-class="{'error': signupForm.user_workplace.$invalid && signupForm.user_workplace.$dirty, 'done': signupForm.user_workplace.$valid }"
+                        >
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+            <div class="text-center">
+                <div style="margin-top: 20px">
+                    <i class="fa fa-sign-in" style="font-size: 100px;color: #e5e5e5 "></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset class="m-t-md">
+    <a ui-sref="signup.step_three" class="btn btn-default put-left">上一步</a>
+    <a class=" btn btn-primary" type="submit"
+       ng-disabled="signupForm.$invalid || !eduVerification()"
+       ng-click="registerAccount()">注册</a>
+
+    <a ui-sref="alumnus"  class="btn btn-default pull-right">返回</a>
+</fieldset>
