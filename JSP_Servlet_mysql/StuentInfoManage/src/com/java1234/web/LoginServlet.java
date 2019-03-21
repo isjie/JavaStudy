@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.java1234.dao.UserDao;
 import com.java1234.model.User;
@@ -45,6 +46,9 @@ public class LoginServlet extends HttpServlet{
                 // 服务器跳转
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }else{
+                //获取session
+                HttpSession session = request.getSession();
+                session.setAttribute("currentUser",currentUser);
                 // 客户端跳转
                 response.sendRedirect("main.jsp");
             }
