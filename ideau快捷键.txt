@@ -2,3 +2,4 @@
  自动补全变量名称 : Ctrl + Alt + v 
 选定代码块, Ctrl+Alt+T   surround with
 get、set快捷键：右键->generator或者快捷键为：alt+insert
+抛出异常：alt+enter
