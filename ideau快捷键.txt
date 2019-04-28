@@ -8,3 +8,4 @@ Ctrl+X    算是剪切当前一整行，
 删除当前一整行的是 Ctrl+Y，
 
 IDEA新建一行，并且光标移到新行：Shift + Enter
+快捷键 Ctrl+Shift+u即可实现大小写的快速切换
