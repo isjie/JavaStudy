@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="hibernateStudy:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/hibernateStudy_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="hibernateStudy/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="hibernateStudy" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
