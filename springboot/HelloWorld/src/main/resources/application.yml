@@ -1,0 +1,9 @@
+server:
+  port: 8888
+  context-path: /HelloWorld
+  
+jdbc:
+  driverClassName: "com.mysql.jdbc.Driver"
+  url: "jdbc:mysql://127.0.0.1:3306/leyou"
+  username: "root"
+  password: "root"
